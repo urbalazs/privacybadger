@@ -169,7 +169,7 @@ font-size: 16px;
     float: left;
 }
 
-#blockedResourcesContainer, #firstpartyProtectionsContainer {
+#blockedResourcesContainer, #firstpartyProtectionsContainer, #widgetReplacementContainer {
     min-height: 70px;
 }
 
@@ -283,7 +283,7 @@ font-size: 16px;
 #options {
     margin-inline-end: 3px;
 }
-#pbInstructions, #special-browser-page, #disabled-site-message, #firstpartyProtectionsContainer {
+#pbInstructions, #special-browser-page, #disabled-site-message, #firstpartyProtectionsContainer, #widgetReplacementContainer {
     color: #505050;
     font-size: 16px;
     margin: 0;
@@ -459,7 +459,7 @@ div.overlay.active {
 .tooltipster-sidetip .tooltipster-arrow-border {
     border: none;
 }
-#firstpartyProtectionsContainer {
+#firstpartyProtectionsContainer, #widgetReplacementContainer {
     display: none;
 }
 

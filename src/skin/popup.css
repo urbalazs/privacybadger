@@ -169,7 +169,7 @@ font-size: 16px;
     float: left;
 }
 
-#blockedResourcesContainer {
+#blockedResourcesContainer, #firstpartyProtectionsContainer {
     min-height: 70px;
 }
 
@@ -283,7 +283,7 @@ font-size: 16px;
 #options {
     margin-inline-end: 3px;
 }
-#pbInstructions, #special-browser-page, #disabled-site-message {
+#pbInstructions, #special-browser-page, #disabled-site-message, #firstpartyProtectionsContainer {
     color: #505050;
     font-size: 16px;
     margin: 0;
@@ -297,7 +297,7 @@ font-size: 16px;
 #pbInstructions :not(#options_domain_list_trackers):not(#options_domain_list_no_trackers) a:hover {
     color: #ec9329
 }
-#instructions-no-trackers, #special-browser-page, #disabled-site-message {
+#instructions-no-trackers, #special-browser-page, #disabled-site-message, #instructions-firstparty-protections {
     text-align: center;
     margin: 45px 0;
     padding: 0;
@@ -306,7 +306,7 @@ font-size: 16px;
     text-align: center;
     margin: 10px 0;
 }
-#instructions-many-trackers, #instructions-no-trackers, #no-third-parties {
+#instructions-many-trackers, #instructions-no-trackers, #no-third-parties, #instructions-firstparty-description {
     display: block;
 }
 #no-third-parties {
@@ -458,6 +458,9 @@ div.overlay.active {
 }
 .tooltipster-sidetip .tooltipster-arrow-border {
     border: none;
+}
+#firstpartyProtectionsContainer {
+    display: none;
 }
 
 @media screen and (max-width: 400px){

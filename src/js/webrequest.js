@@ -1039,6 +1039,7 @@ function dispatcher(request, sender, sendResponse) {
       noTabData: false,
       origins,
       seenComic: badger.getSettings().getItem("seenComic"),
+      showExpandedTrackingSection: badger.getSettings().getItem("showExpandedTrackingSection"),
       showLearningPrompt: badger.getPrivateSettings().getItem("showLearningPrompt"),
       showNonTrackingDomains: badger.getSettings().getItem("showNonTrackingDomains"),
       tabHost: tab_host,
@@ -1123,6 +1124,18 @@ function dispatcher(request, sender, sendResponse) {
     sendResponse({
       origins: badger.storage.getTrackingDomains()
     });
+    break;
+  }
+
+  case "showTrackingDomainsSection": {
+    badger.getSettings().setItem("showExpandedTrackingSection", true);
+    sendResponse();
+    break;
+  }
+
+  case "hideTrackingDomainsSection": {
+    badger.getSettings().setItem("showExpandedTrackingSection", false);
+    sendResponse();
     break;
   }
 

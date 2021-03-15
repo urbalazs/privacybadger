@@ -189,6 +189,19 @@ function init() {
   $('#blockedResourcesContainer').on('change', 'input:radio', updateOrigin);
   $('#blockedResourcesContainer').on('click', '.userset .honeybadgerPowered', revertDomainControl);
 
+  $('#expand-blocked-resources-text').on('click', showBlockedResourcesHandler);
+  $('#collapse-blocked-resources-text').on('click', hideBlockedResourcesHandler);
+
+  if (POPUP_DATA.showExpandedTrackingSection) {
+    $('#expand-blocked-resources-text').hide();
+    $('#collapse-blocked-resources-text').show();
+    $('#blockedResources').show();
+  } else if (!POPUP_DATA.showExpandedTrackingSection) {
+    $('#expand-blocked-resources-text').show();
+    $('#collapse-blocked-resources-text').hide();
+    $('#blockedResources').hide();
+  }
+
   $("#version").text(
     chrome.i18n.getMessage("version", chrome.runtime.getManifest().version)
   );
@@ -457,6 +470,30 @@ function share() {
 }
 
 /**
+ * Click handler for expanding the blocked resources section
+ */
+function showBlockedResourcesHandler() {
+  $("#collapse-blocked-resources-text").show();
+  $("#expand-blocked-resources-text").hide();
+  $("#blockedResources").show();
+  chrome.runtime.sendMessage({
+    type: "showTrackingDomainsSection"
+  });
+}
+
+/**
+ * Click handler for hiding the blocked resources section
+ */
+function hideBlockedResourcesHandler() {
+  $("#collapse-blocked-resources-text").hide();
+  $("#expand-blocked-resources-text").show();
+  $("#blockedResources").hide();
+  chrome.runtime.sendMessage({
+    type: "hideTrackingDomainsSection"
+  });
+}
+
+/**
  * Handler to undo user selection for a tracker
  */
 function revertDomainControl(event) {
@@ -530,6 +567,7 @@ function refreshPopup() {
     // hide the number of trackers and slider instructions message
     // if no sliders will be displayed
     $("#instructions-many-trackers").hide();
+    $("#toggleBlockedResourcesContainer").hide();
 
     // show "no trackers" message
     $("#instructions-no-trackers").show();
